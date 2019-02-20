@@ -1,10 +1,8 @@
 version: '3.4'
 
 services:
-  app:
-   build: ./app
   aspnetcorethingsserver:
-    image: ${DOCKER_REGISTRY}aspnetcorethingsserver
+    image: ${DOCKER_REGISTRY}:aspnetcorethingsserver
     build:
       context: .
       dockerfile: src\AspNetCoreThingsServer\Dockerfile
