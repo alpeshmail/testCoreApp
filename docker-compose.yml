@@ -2,11 +2,6 @@ version: '3.4'
 
 services:
   angularclient:
-    image: ${DOCKER_REGISTRY}angularclient
-    build:
-      context: .
-      dockerfile: src\AngularClient\Dockerfile
-
   aspnetcorethingsserver:
     image: ${DOCKER_REGISTRY}aspnetcorethingsserver
     build:
