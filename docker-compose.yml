@@ -1,7 +1,8 @@
 version: '3.4'
-app:
-  build: ./app
+
 services:
+  app:
+   build: ./app
   aspnetcorethingsserver:
     image: ${DOCKER_REGISTRY}aspnetcorethingsserver
     build:
