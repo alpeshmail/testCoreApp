@@ -1,0 +1,65 @@
+Pre-requirement:
+
+1.       Visual Studio 2019
+
+2.       .Net Core 2.2
+
+3.       .Net Framework 4.6 ( Latest is 4.8,  We can go for the latest that is approved in Organization)
+
+4.       PowerShell 6.2 (Documentation is suggested that it required a PowerShell 6.2)
+
+ 
+
+High-Level Steps
+
+1.       Create a window Service on .Net Core 2.2
+
+2.       A Timer is watch file pattern on certain interval (1 to 5 minutes).
+
+Note: Process Name and File pattern are got from DB.
+
+(USE Core EF, Will discuss for DB design)
+
+3.       When File is found then start processing the file.
+
+4.       Create a Thread to Process File
+
+Note: Separate Thread for Each File Pattern,
+
+If File is processing status then it will skip that file pattern ad process this file pattern on next run after processing is completed.
+
+5.       Create a Process Instance Id using Process Name.
+
+(USE Core EF, Will discuss for DB design)
+
+6.       Move the file to "Processing" Folder
+
+7.       Got BCP Configuration detail from DB.
+
+Note: We have another option to use SqlBulkCopy instead of BCP.
+
+(USE Core EF, Will discuss for DB design)
+
+8.       Create a format file (.fmt file) (Note: Noted Need for SqlBulkCopy)
+
+9.       Exiting “CommonLoader” create a temp file and then doing a BCP a temp file.
+
+(Note: Need more time to review it why we need temp file to do BCP. We can directly BCP existing file).
+
+10.   Create a BCP command/SqlBulkCopy Command
+
+11.   Load data to Stage table using BCP/SqlBulk (Step-6 – provide a Stage Table detail)
+
+Note: Exiting common loader used BCP.
+
+12.   Process to Actual Table (Common Procedure/Custom Procedures)
+
+(USE Core EF to call proc)
+
+13.   Post Processing (Custom Proc to Convert denormalize data to normalize it) – Optional
+
+(USE Core EF to call proc)
+
+14.   Move File Processed/Error folder base on Success or Failure.
+
+15.   Mark Process Completed with Success/Failure.
