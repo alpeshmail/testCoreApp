@@ -44,7 +44,7 @@
     "bootstrap": "4.1.1",
     "core-js": "2.5.7",
     "ie-shim": "0.1.0",
-    "msgpack5": "4.2.0",
+    "msgpack5": "4.5.1",
     "npm-check-updates": "^2.14.2",
     "popper.js": "^1.14.3",
     "rxjs": "6.2.0",
